@@ -105,7 +105,7 @@ async def process_images(image_data_list: List[ImageData]):
         
         try:
             results.append(response_data.model_dump())  # Use model_dump instead of dict
-        except ValidationError as e:
+        except Exception as e:
             # Log the validation error
             print(f"Validation Error: {e}")
             # Continue with the loop or add default/error information if needed
