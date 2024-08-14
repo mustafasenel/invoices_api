@@ -120,7 +120,5 @@ async def save_invoice(invoice: Invoice, request: Request):
         invoice = Invoice(**invoice_data)  # Validate the payload using Pydantic
         collection.insert_one(invoice.model_dump())
         return {"message": "Invoice saved successfully"}
-    except ValidationError as e:
-        raise HTTPException(status_code=422, detail=e.errors())
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
